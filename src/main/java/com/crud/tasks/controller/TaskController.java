@@ -24,7 +24,7 @@ public class TaskController {
     public void deleteTask(Long taskId){
 
     }
-    @PutMapping(value = "uptadeTask")
+    @PutMapping(value = "updateTask")
     public TaskDto updateTask(TaskDto task){
         return new TaskDto(1L,"Edited Test title", "Test_content_2");
     }
