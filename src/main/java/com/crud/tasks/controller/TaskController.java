@@ -31,7 +31,8 @@ public class TaskController {
 
     @GetMapping(value = "getTask")
     public TaskDto getTask(Long taskId){
-        return new TaskDto(1L, "Test title", "test_content");
+        Task task = service.getTaskByid(taskId);
+        return taskMapper.mapToTaskDto(task);
     }
 
     @DeleteMapping(value = "deleteTask")
