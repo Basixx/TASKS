@@ -17,7 +17,10 @@ public class TrelloController {
     private final TrelloClient trelloClient;
 
     @GetMapping("getTrelloBoards")
-    public void getTrelloBoards() {
+    public List<TrelloBoardDto> getTrelloBoards(){
+        return trelloClient.getTrelloBoards();
+    }
+    /*public void getTrelloBoards() {
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 
         trelloBoards.forEach(trelloBoardDto -> {
@@ -28,7 +31,7 @@ public class TrelloController {
                         trelloList.getId() + " - " + trelloList.isClosed());
             });
         });
-    }
+    }*/
 
     @GetMapping("getKodillaBoardsWithNameAndId")
     public void getKodillaBoardsWithNameAndId(){
