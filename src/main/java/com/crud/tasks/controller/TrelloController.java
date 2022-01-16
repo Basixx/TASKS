@@ -28,19 +28,17 @@ public class TrelloController {
                         trelloList.getId() + " - " + trelloList.isClosed());
             });
         });
-
     }
 
     @GetMapping("getKodillaBoardsWithNameAndId")
     public void getKodillaBoardsWithNameAndId(){
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 
-        trelloBoards.forEach(trelloBoardDto -> {
-            if((trelloBoardDto.getId() != null)&&(trelloBoardDto.getName() != null)
-                    && (trelloBoardDto.getName().contains("Kodilla"))) {
-                System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName());
-            }
-        });
+        trelloBoards.stream()
+                .filter(trelloBoardDto -> trelloBoardDto.getName() != null)
+                .filter(trelloBoardDto -> trelloBoardDto.getId() != null)
+                .filter(trelloBoardDto -> trelloBoardDto.getName().contains("Kodilla"))
+                .forEach(System.out::println);
     }
 
     @PostMapping("createTrelloCard")
