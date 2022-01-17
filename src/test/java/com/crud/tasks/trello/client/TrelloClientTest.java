@@ -103,6 +103,7 @@ class TrelloClientTest {
         List<TrelloBoardDto> fetchedTrelloBoards = trelloClient.getTrelloBoards();
 
         //then
+        assertNotEquals(null, fetchedTrelloBoards);
         assertEquals(0, fetchedTrelloBoards.size());
     }
 }
