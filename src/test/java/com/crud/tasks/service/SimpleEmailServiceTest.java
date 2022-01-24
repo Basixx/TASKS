@@ -24,7 +24,7 @@ class SimpleEmailServiceTest {
     @Test
     public void shouldSendEmail(){
         //Given
-        Mail mail = new Mail("test@test.com", "Test", java.util.Optional.of("test"), "Test Message");
+        Mail mail = new Mail.MailBuilder().mailTo("test@test.com").subject("Test").message("Test Message").toCc("cc@cc.com").build();
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
@@ -38,4 +38,5 @@ class SimpleEmailServiceTest {
         //Then
         verify(javaMailSender, times(1)).send(mailMessage);
     }
+
 }
