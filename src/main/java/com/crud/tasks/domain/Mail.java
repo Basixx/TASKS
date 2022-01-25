@@ -35,7 +35,7 @@ public class Mail {
         }
 
         public MailBuilder toCc(String toCc) {
-            this.toCc = Optional.ofNullable(toCc).orElse(null);
+            this.toCc = toCc;
             return this;
         }
 
