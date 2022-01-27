@@ -17,7 +17,7 @@ public class TasksApplication{
 		SpringApplication.run(TasksApplication.class, args);
 
 
-		List<String> userNames = new ArrayList<>();
+		/*List<String> userNames = new ArrayList<>();
 		userNames.add("jan");
 		userNames.add("jan2");
 		userNames.add("jan3");
@@ -26,7 +26,7 @@ public class TasksApplication{
 		userNames.stream()
 				.filter(name -> name.length() ==3)
 				.findAny()
-				.ifPresent(name -> System.out.println(name));
+				.ifPresent(name -> System.out.println(name));*/
 
 
 	}

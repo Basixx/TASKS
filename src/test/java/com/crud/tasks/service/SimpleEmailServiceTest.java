@@ -44,7 +44,7 @@ class SimpleEmailServiceTest {
         verify(javaMailSender, times(1)).send(mailMessage);
     }
 
-    @Test
+    /*@Test
     public void shouldSendEmailWithOptional(){
         //Given
         Mail mail = new Mail.MailBuilder().mailTo("test@test.com").subject("Test").message("Test Message").toCc("cc@cc.com").build();
@@ -55,14 +55,14 @@ class SimpleEmailServiceTest {
 
         Optional <String> ccOpt = Optional.ofNullable(mail.getToCc());
 
-        /*if(ccOpt.isPresent()) {
+        *//*if(ccOpt.isPresent()) {
             mailMessage.setCc(mail.getToCc());
-        }*/
+        }*//*
 
-        /*if(ccOpt.isPresent()) {
+        *//*if(ccOpt.isPresent()) {
             mailMessage.setCc(ccOpt.get());
         }
-        mailMessage.setText(mail.getMessage());*/
+        mailMessage.setText(mail.getMessage());*//*
 
         ccOpt.ifPresent(cc -> mailMessage.setCc(cc));
         //albo
@@ -73,6 +73,6 @@ class SimpleEmailServiceTest {
 
         //Then
         verify(javaMailSender, times(1)).send(mailMessage);
-    }
+    }*/
 
 }

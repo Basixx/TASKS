@@ -15,12 +15,13 @@ import java.util.List;
 public class TrelloController {
 
     private final TrelloService trelloService;
+
     @GetMapping("getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards(){
         return trelloService.fetchTrelloBoards();
     }
 
-    @GetMapping("getKodillaBoardsWithNameAndId")
+    /*@GetMapping("getKodillaBoardsWithNameAndId")
     public void getKodillaBoardsWithNameAndId(){
         List<TrelloBoardDto> trelloBoards = trelloService.fetchTrelloBoards();
 
@@ -29,7 +30,7 @@ public class TrelloController {
                 .filter(trelloBoardDto -> trelloBoardDto.getId() != null)
                 .filter(trelloBoardDto -> trelloBoardDto.getName().contains("Kodilla"))
                 .forEach(System.out::println);
-    }
+    }*/
 
     @PostMapping("createTrelloCard")
     public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto){
