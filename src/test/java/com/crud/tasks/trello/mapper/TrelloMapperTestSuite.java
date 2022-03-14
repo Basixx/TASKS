@@ -1,6 +1,7 @@
-package com.crud.tasks.mapper;
+package com.crud.tasks.trello.mapper;
 
 import com.crud.tasks.domain.*;
+import com.crud.tasks.mapper.TrelloMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
