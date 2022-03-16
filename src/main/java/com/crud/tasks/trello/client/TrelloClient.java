@@ -43,7 +43,6 @@ public class TrelloClient {
             LOGGER.error(e.getMessage(), e);
             return Collections.emptyList();
         }
-
     }
 
     public List<TrelloBoardDto> getFilteredTrelloBoards(){
@@ -71,7 +70,6 @@ public class TrelloClient {
             LOGGER.error(e.getMessage(), e);
             return Collections.emptyList();
         }
-
     }
 
     private URI getUrl (String trelloApiEndpoint, String trelloAppKey, String trelloToken, String trelloUser){

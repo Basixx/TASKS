@@ -36,7 +36,6 @@ class TaskControllerTest {
     @MockBean
     private TaskMapper taskMapper;
 
-
     @Test
     public void shouldGetTasks() throws Exception {
         //Given
@@ -48,6 +47,7 @@ class TaskControllerTest {
         }
         given(taskMapper.mapToTaskDtoList(tasks)).willReturn(tasksDto);
         given(service.getAllTasks()).willReturn(tasks);
+
         //When && Then
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/v1/task/getTasks")
@@ -72,6 +72,7 @@ class TaskControllerTest {
         TaskDto taskDto = new TaskDto(1L, "Title", "Content");
         given(taskMapper.mapToTaskDto(task)).willReturn(taskDto);
         given(service.getTask(1L)).willReturn(Optional.of(task));
+
         //When & Then
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/v1/task/getTask?taskId=1")
@@ -128,6 +129,7 @@ class TaskControllerTest {
         given(service.saveTask(ArgumentMatchers.any(Task.class))).willReturn(task);
         Gson gson = new Gson();
         String jsonContent = gson.toJson(taskDto);
+
         //When & Then
         mockMvc.perform(MockMvcRequestBuilders
                     .post("/v1/task/createTask")

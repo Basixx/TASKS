@@ -34,6 +34,7 @@ class TrelloControllerTest {
     void shouldFetchEmptyTrelloBoards() throws Exception {
         //Given
         when(trelloFacade.fetchTrelloBoards()).thenReturn(List.of());
+
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
@@ -41,7 +42,6 @@ class TrelloControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().is(200))
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(0)));
-
     }
 
     @Test
@@ -49,7 +49,6 @@ class TrelloControllerTest {
         //Given
         List<TrelloListDto> trelloLists = List.of(new TrelloListDto("1", "Test list", false));
         List<TrelloBoardDto> trelloBoards = List.of(new TrelloBoardDto("1", "Test Task", trelloLists));
-
         when(trelloFacade.fetchTrelloBoards()).thenReturn(trelloBoards);
 
         //When & Then
@@ -66,8 +65,6 @@ class TrelloControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].id", Matchers.is("1")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].name", Matchers.is("Test list")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].closed", Matchers.is(false)));
-
-
     }
 
     @Test
