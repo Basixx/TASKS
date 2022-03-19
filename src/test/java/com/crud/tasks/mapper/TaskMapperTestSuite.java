@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+//@SpringBootTest nie potrzebujemy springa, bo to jest test jednostkowy
 public class TaskMapperTestSuite {
-    @Autowired
+   // @Autowired analogicznie
+   // private TaskMapper taskMapper;
+
     private TaskMapper taskMapper;
 
     @Test
