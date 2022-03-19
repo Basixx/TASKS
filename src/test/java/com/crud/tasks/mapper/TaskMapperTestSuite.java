@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-//@SpringBootTest nie potrzebujemy springa, bo to jest test jednostkowy
+//@SpringBootTest //nie potrzebujemy springa, bo to jest test jednostkowy
 public class TaskMapperTestSuite {
-   // @Autowired analogicznie
-   // private TaskMapper taskMapper;
+    //@Autowired //analogicznie
+    private TaskMapper taskMapper = new TaskMapper();
 
-    private TaskMapper taskMapper;
+    //private TaskMapper taskMapper;
 
     @Test
-    public void testMapToTask(){
+    public void testMapToTask() {
         //Given
         TaskDto taskDto = new TaskDto(1L, "taskTitle", "taskContent");
 

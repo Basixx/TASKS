@@ -14,12 +14,12 @@ public class DbService {
     @Autowired
     private TaskRepository repository;
 
-    public List<Task> getAllTasks(){
-        return repository.findAll();
-    }
-
     public Task saveTask(final Task task){
         return repository.save(task);
+    }
+
+    public List<Task> getAllTasks(){
+        return repository.findAll();
     }
 
     public Optional<Task> getTask(final Long id){
