@@ -40,6 +40,7 @@ dependencies {
 	testImplementation('com.google.code.gson:gson')
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	runtimeOnly('com.h2database:h2')
+	implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
 }
 
 test {
