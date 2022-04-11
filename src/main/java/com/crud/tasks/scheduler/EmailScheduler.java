@@ -20,15 +20,25 @@ public class EmailScheduler {
     //@Scheduled(fixedDelay = 10000)
     @Scheduled(cron = "0 0 10 * * *")
     public void sendInformationEmail() {
-        long size = taskRepository.count();
         simpleEmailService.send(
-                new Mail(
-                        adminConfig.getAdminMail(),
-                        SUBJECT,
-                        "Currently in database you got: " + size +
-                                (size ==1 ? " task" : " tasks"),
-                        null
-                )
+                setMail()
         );
+    }
+
+    @Scheduled(cron = "0 30 12 * * *")
+    public void sendQuantityEmail() {
+        simpleEmailService.sendCardsQuantity(
+                setMail()
+        );
+    }
+
+    private Mail setMail(){
+        long size = taskRepository.count();
+        Mail mail = new Mail(adminConfig.getAdminMail(),
+                SUBJECT,
+                "Currently in database you got: " + size +
+                        (size ==1 ? " task" : " tasks"),
+                null);
+        return mail;
     }
 }
