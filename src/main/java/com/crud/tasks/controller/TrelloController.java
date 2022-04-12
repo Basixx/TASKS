@@ -16,7 +16,7 @@ public class TrelloController {
 
     private final TrelloFacade trelloFacade;
 
-    @GetMapping("getTrelloBoards")
+    @GetMapping(value = "/boards")
     public List<TrelloBoardDto> getTrelloBoards(){
         return trelloFacade.fetchTrelloBoards();
     }
@@ -32,7 +32,7 @@ public class TrelloController {
                 .forEach(System.out::println);
     }*/
 
-    @PostMapping("createTrelloCard")
+    @PostMapping(value = "/cards")
     public CreatedTrelloCardDto createTrelloCard(@RequestBody TrelloCardDto trelloCardDto){
         return trelloFacade.createCard(trelloCardDto);
     }

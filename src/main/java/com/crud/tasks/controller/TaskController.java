@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/v1/task")
+@RequestMapping("/v1")
 public class TaskController {
 
     private final DbService service;
@@ -23,34 +23,31 @@ public class TaskController {
         this.taskMapper = taskMapper;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getTasks")
+    @RequestMapping(method = RequestMethod.GET, value = "/tasks")
     public List<TaskDto> getTasks() {
         List<Task> tasks = service.getAllTasks();
         return taskMapper.mapToTaskDtoList(tasks);
     }
 
-    @GetMapping(value = "getTask")
-    public TaskDto getTask(@RequestParam Long taskId) throws TaskNotFoundException{
+    @GetMapping(value = "/tasks/{taskId}")
+    public TaskDto getTask(@PathVariable Long taskId) throws TaskNotFoundException{
 
         return taskMapper.mapToTaskDto(service
                 .getTask(taskId)
                 .orElseThrow(TaskNotFoundException::new));
     }
 
-    @DeleteMapping(value = "deleteTask")
-    public void deleteTask(@RequestParam Long taskId) throws TaskNotFoundException{
+    @DeleteMapping(value = "/tasks/{taskId}")
+    public void deleteTask(@PathVariable Long taskId) throws TaskNotFoundException{
         service.deleteTask(taskId);
     }
-    @PutMapping(value = "updateTask")
+    @PutMapping(value = "/tasks")
     public TaskDto updateTask(@RequestBody TaskDto taskDto) {
-        Task task = taskMapper.mapToTask(taskDto);
-        Task savedTask = service.saveTask(task);
-        return taskMapper.mapToTaskDto(savedTask);
+        return taskMapper.mapToTaskDto(service.saveTask(taskMapper.mapToTask(taskDto)));
     }
 
-    @PostMapping(value = "createTask", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/tasks", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createTask(@RequestBody TaskDto taskDto){
-        Task task = taskMapper.mapToTask(taskDto);
-        service.saveTask(task);
+        service.saveTask(taskMapper.mapToTask(taskDto));
     }
 }
